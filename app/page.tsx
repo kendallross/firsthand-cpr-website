@@ -20,7 +20,7 @@ const faqs = [
   {
     question: "Who leads the training?",
     answer:
-      "Our instructors are firefighters, paramedics, and EMTs who bring firsthand emergency experience into every class.",
+      "All FirstHand CPR Training instructors are American Heart Association certified. They are also firefighters, paramedics, and EMTs who bring firsthand emergency experience into every class.",
   },
   {
     question: "Do you offer on-site group training?",
@@ -30,7 +30,7 @@ const faqs = [
   {
     question: "Will I receive a certification card?",
     answer:
-      "Eligible certification courses include a card after all course requirements are successfully completed.",
+      "For eligible AHA courses, course completion cards are provided by the American Heart Association after all course requirements are successfully completed.",
   },
 ];
 
@@ -51,27 +51,28 @@ export default function Home() {
           <a href="#about">About</a>
           <a href="#faq">FAQ</a>
         </nav>
-        <a className="button button-small" href="#contact">Request Training</a>
       </header>
 
       <section className="hero" id="top">
         <div className="hero-copy">
-          <p className="eyebrow">Taught by real emergency professionals</p>
           <h1>
             Real experience.
             <span>Real training.</span>
           </h1>
+          <p className="eyebrow hero-eyebrow">
+            Taught by real emergency professionals
+          </p>
           <p className="hero-lede">
             Practical CPR, AED, first-aid, and BLS training led by firefighters,
             paramedics, and EMTs who know what happens when every second counts.
           </p>
           <div className="hero-actions">
-            <a className="button" href="#classes">View Classes</a>
-            <a className="text-link" href="#groups">Plan Group Training <span>→</span></a>
+            <a className="button" href="#classes">View Class Options</a>
+            <a className="button button-outline" href="#contact">Request Training</a>
           </div>
           <div className="trust-row" aria-label="Training highlights">
             <span>Hands-on practice</span>
-            <span>Experienced instructors</span>
+            <span>AHA certified instructors</span>
             <span>Flexible group scheduling</span>
           </div>
         </div>
@@ -94,11 +95,9 @@ export default function Home() {
       </section>
 
       <section className="proof-strip">
-        <p>Training that feels practical because it comes from practice.</p>
+        <p>All instructors are American Heart Association certified.</p>
         <ul>
-          <li>Firefighters</li>
-          <li>Paramedics</li>
-          <li>EMTs</li>
+          <li>AHA course completion cards provided</li>
         </ul>
       </section>
 
@@ -120,6 +119,10 @@ export default function Home() {
               <p className="course-audience">{course.audience}</p>
               <h3>{course.title}</h3>
               <p>{course.detail}</p>
+              <div className="course-cost">
+                <span>Course cost</span>
+                <div aria-label="Pricing to be added" />
+              </div>
               <a href="#contact">Ask about this class <span>→</span></a>
             </article>
           ))}
