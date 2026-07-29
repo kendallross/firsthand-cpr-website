@@ -39,9 +39,11 @@ export default function Home() {
     <main>
       <header className="site-header">
         <a className="brand" href="#top" aria-label="FirstHand CPR Training home">
-          <span className="header-logo" aria-hidden="true">
-            <img src="/firsthand-business-card.png" alt="" />
-          </span>
+          <img
+            className="header-logo"
+            src="/firsthand-banner-logo.png"
+            alt="FirstHand CPR Training"
+          />
         </a>
         <nav aria-label="Main navigation">
           <a href="#classes">Classes</a>
