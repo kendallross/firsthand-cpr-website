@@ -39,11 +39,26 @@ export default function Home() {
     <main>
       <header className="site-header">
         <a className="brand" href="#top" aria-label="FirstHand CPR Training home">
-          <img
-            className="header-logo"
-            src="/firsthand-banner-logo.png"
-            alt="FirstHand CPR Training"
-          />
+          <span className="ecg-track" aria-hidden="true">
+            {Array.from({ length: 10 }, (_, index) => (
+              <i className="qrs" key={index}>
+                <b /><b /><b /><b /><b />
+              </i>
+            ))}
+          </span>
+          <span className="header-art">
+            <img
+              className="header-logo"
+              src="/firsthand-banner-logo.png"
+              alt="FirstHand CPR Training"
+            />
+            <img
+              className="hand-pulse"
+              src="/firsthand-banner-logo.png"
+              alt=""
+              aria-hidden="true"
+            />
+          </span>
         </a>
         <nav aria-label="Main navigation">
           <a href="#classes">Classes</a>
