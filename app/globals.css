@@ -52,6 +52,23 @@ a {
   width: max-content;
 }
 
+.header-logo {
+  aspect-ratio: 703 / 497;
+  display: block;
+  overflow: hidden;
+  position: relative;
+  width: clamp(200px, 22vw, 280px);
+}
+
+.header-logo img {
+  height: auto;
+  left: -6.4%;
+  max-width: none;
+  position: absolute;
+  top: -51.3%;
+  width: 218.5%;
+}
+
 .brand-mark {
   align-items: center;
   background: var(--red);

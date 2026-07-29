@@ -39,10 +39,8 @@ export default function Home() {
     <main>
       <header className="site-header">
         <a className="brand" href="#top" aria-label="FirstHand CPR Training home">
-          <span className="brand-mark" aria-hidden="true">FH</span>
-          <span>
-            <strong>FirstHand</strong>
-            <small>CPR TRAINING</small>
+          <span className="header-logo" aria-hidden="true">
+            <img src="/firsthand-business-card.png" alt="" />
           </span>
         </a>
         <nav aria-label="Main navigation">
@@ -63,11 +61,12 @@ export default function Home() {
             Taught by real emergency professionals
           </p>
           <p className="hero-lede">
-            Practical CPR, AED, first-aid, and BLS training led by firefighters,
-            paramedics, and EMTs who know what happens when every second counts.
+            Practical CPR, AED, First-Aid, and BLS training courses led by
+            firefighters, EMT&apos;s, and paramedics who know how to operate
+            when every second counts.
           </p>
           <div className="hero-actions">
-            <a className="button" href="#classes">View Class Options</a>
+            <a className="button" href="#classes">View Course Options</a>
             <a className="button button-outline" href="#contact">Request Training</a>
           </div>
           <div className="trust-row" aria-label="Training highlights">
@@ -84,7 +83,7 @@ export default function Home() {
             <i />
             <i />
           </div>
-          <p>Confidence starts before the emergency.</p>
+          <p>Real confidence starts before the emergency.</p>
           <div className="stat-grid">
             <div><strong>CPR</strong><span>Learn the rhythm</span></div>
             <div><strong>AED</strong><span>Act without delay</span></div>
@@ -108,8 +107,9 @@ export default function Home() {
             <h2>Skills you can use when it matters.</h2>
           </div>
           <p>
-            Clear instruction, realistic scenarios, and plenty of practice—
-            without the generic classroom routine.
+            FirstHand provides a number of courses to fit your needs. All
+            courses will include classroom instruction, realistic scenarios,
+            and plenty of practice with an experienced instructor.
           </p>
         </div>
         <div className="course-grid">
