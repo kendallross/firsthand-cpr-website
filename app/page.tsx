@@ -129,10 +129,6 @@ export default function Home() {
               <p className="course-audience">{course.audience}</p>
               <h3>{course.title}</h3>
               <p>{course.detail}</p>
-              <div className="course-cost">
-                <span>Course cost</span>
-                <div aria-label="Pricing to be added" />
-              </div>
               <a href={`#${course.modalId}`}>
                 View course details <span>→</span>
               </a>
@@ -159,8 +155,8 @@ export default function Home() {
           </p>
 
           <div className="modal-pricing">
-            <div><span>First-time course</span><strong>$55</strong></div>
-            <div><span>Renewal course</span><strong>$50</strong></div>
+            <div><span>First-time course</span><strong>$65</strong></div>
+            <div><span>Renewal course</span><strong>$60</strong></div>
             <div><span>Typical runtime</span><strong>2–3 hours</strong></div>
           </div>
 
@@ -205,8 +201,8 @@ export default function Home() {
           </p>
 
           <div className="modal-pricing modal-pricing-two">
-            <div><span>First-time course</span><strong>$55</strong></div>
-            <div><span>Renewal course</span><strong>$50</strong></div>
+            <div><span>First-time course</span><strong>$65</strong></div>
+            <div><span>Renewal course</span><strong>$60</strong></div>
           </div>
 
           <div className="modal-details">
@@ -252,8 +248,9 @@ export default function Home() {
             and likely response needs.
           </p>
 
-          <div className="modal-pricing modal-pricing-one">
+          <div className="modal-pricing modal-pricing-two">
             <div><span>Course cost</span><strong>$40</strong></div>
+            <div><span>Add CPR training</span><strong>+$25</strong></div>
           </div>
 
           <div className="modal-details">

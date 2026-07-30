@@ -399,48 +399,37 @@ h2 {
 
 .course-audience {
   color: var(--red);
-  font: 700 10px/1.4 var(--font-geist-mono), monospace;
+  font: 700 13px/1.4 var(--font-geist-mono), monospace;
   letter-spacing: 1px;
   text-transform: uppercase;
 }
 
 .course-card h3 {
-  font-size: 28px;
+  font-size: 35px;
   letter-spacing: -0.03em;
   margin-bottom: 15px;
 }
 
 .course-card > p:last-of-type {
   color: #666;
+  font-size: 20px;
   line-height: 1.6;
-}
-
-.course-cost {
-  border-top: 1px solid #d8d5ce;
-  margin-top: 24px;
-  padding-top: 17px;
-}
-
-.course-cost > span {
-  color: var(--ink);
-  display: block;
-  font: 750 10px/1.4 var(--font-geist-mono), monospace;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-}
-
-.course-cost > div {
-  border-bottom: 1px solid #bdb9b0;
-  height: 30px;
 }
 
 .course-card a {
   display: inline-block;
-  font-size: 13px;
+  font-size: 16px;
   font-weight: 750;
-  margin-top: 20px;
+  margin-top: 34px;
   position: relative;
+  transition: color 160ms ease;
   z-index: 2;
+}
+
+.course-card a:not(.course-card-trigger):hover,
+.course-card a:not(.course-card-trigger):focus-visible,
+.course-card a:not(.course-card-trigger):active {
+  color: var(--red);
 }
 
 .course-card .course-card-trigger {
@@ -527,11 +516,6 @@ h2 {
 
 .modal-pricing-two {
   grid-template-columns: repeat(2, 1fr);
-}
-
-.modal-pricing-one {
-  grid-template-columns: minmax(220px, 1fr);
-  max-width: 320px;
 }
 
 .modal-pricing div {
