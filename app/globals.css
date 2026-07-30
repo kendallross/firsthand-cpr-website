@@ -381,6 +381,7 @@ h2 {
   border-top: 5px solid var(--ink);
   min-height: 380px;
   padding: 30px;
+  position: relative;
   transition: transform 180ms ease, border-color 180ms ease;
 }
 
@@ -438,6 +439,135 @@ h2 {
   font-size: 13px;
   font-weight: 750;
   margin-top: 20px;
+  position: relative;
+  z-index: 2;
+}
+
+.course-card .course-card-trigger {
+  inset: 0;
+  margin: 0;
+  position: absolute;
+  z-index: 1;
+}
+
+.course-modal {
+  align-items: center;
+  display: flex;
+  inset: 0;
+  justify-content: center;
+  opacity: 0;
+  padding: 24px;
+  pointer-events: none;
+  position: fixed;
+  transition: opacity 180ms ease;
+  z-index: 100;
+}
+
+.course-modal:target {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.modal-backdrop {
+  background: rgb(10 10 10 / 78%);
+  inset: 0;
+  position: absolute;
+}
+
+.modal-card {
+  background: var(--white);
+  box-shadow: 0 30px 90px rgb(0 0 0 / 35%);
+  max-height: calc(100vh - 48px);
+  max-width: 850px;
+  overflow-y: auto;
+  padding: clamp(30px, 5vw, 58px);
+  position: relative;
+  transform: translateY(18px);
+  transition: transform 180ms ease;
+  width: 100%;
+  z-index: 1;
+}
+
+.course-modal:target .modal-card {
+  transform: translateY(0);
+}
+
+.modal-close {
+  align-items: center;
+  border: 1px solid #d8d5ce;
+  display: flex;
+  font-size: 28px;
+  height: 42px;
+  justify-content: center;
+  position: absolute;
+  right: 22px;
+  top: 22px;
+  width: 42px;
+}
+
+.modal-card h2 {
+  font-size: clamp(42px, 6vw, 66px);
+  margin: 0 52px 18px 0;
+}
+
+.modal-intro {
+  color: #5e5e5e;
+  font-size: 17px;
+  line-height: 1.65;
+  max-width: 680px;
+}
+
+.modal-pricing {
+  border-bottom: 1px solid #d8d5ce;
+  border-top: 1px solid #d8d5ce;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  margin: 34px 0;
+}
+
+.modal-pricing div {
+  padding: 22px 20px 22px 0;
+}
+
+.modal-pricing div + div {
+  border-left: 1px solid #d8d5ce;
+  padding-left: 20px;
+}
+
+.modal-pricing span,
+.modal-pricing strong {
+  display: block;
+}
+
+.modal-pricing span,
+.modal-label {
+  font: 750 10px/1.4 var(--font-geist-mono), monospace;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.modal-pricing strong {
+  color: var(--red);
+  font-size: 28px;
+  margin-top: 8px;
+}
+
+.modal-details {
+  display: grid;
+  gap: 40px;
+  grid-template-columns: 1fr 1fr;
+  margin-bottom: 34px;
+}
+
+.modal-details ul {
+  color: #555;
+  line-height: 1.6;
+  margin: 0;
+  padding-left: 20px;
+}
+
+.modal-details li + li {
+  margin-top: 8px;
 }
 
 .group-section {
@@ -696,6 +826,26 @@ footer p:last-child {
 
   .group-list {
     grid-template-columns: 1fr;
+  }
+
+  .course-modal {
+    padding: 12px;
+  }
+
+  .modal-card {
+    max-height: calc(100vh - 24px);
+    padding: 34px 24px;
+  }
+
+  .modal-pricing,
+  .modal-details {
+    grid-template-columns: 1fr;
+  }
+
+  .modal-pricing div + div {
+    border-left: 0;
+    border-top: 1px solid #d8d5ce;
+    padding-left: 0;
   }
 
   .about-kicker {

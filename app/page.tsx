@@ -117,6 +117,13 @@ export default function Home() {
         <div className="course-grid">
           {courses.map((course, index) => (
             <article className="course-card" key={course.title}>
+              {index === 0 && (
+                <a
+                  className="course-card-trigger"
+                  href="#bls-course-details"
+                  aria-label="View BLS Provider course details"
+                />
+              )}
               <span className="course-number">0{index + 1}</span>
               <p className="course-audience">{course.audience}</p>
               <h3>{course.title}</h3>
@@ -125,9 +132,57 @@ export default function Home() {
                 <span>Course cost</span>
                 <div aria-label="Pricing to be added" />
               </div>
-              <a href="#contact">Ask about this class <span>→</span></a>
+              <a href={index === 0 ? "#bls-course-details" : "#contact"}>
+                {index === 0 ? "View course details" : "Ask about this class"} <span>→</span>
+              </a>
             </article>
           ))}
+        </div>
+      </section>
+
+      <section
+        className="course-modal"
+        id="bls-course-details"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="bls-modal-title"
+      >
+        <a className="modal-backdrop" href="#classes" aria-label="Close BLS course details" />
+        <div className="modal-card">
+          <a className="modal-close" href="#classes" aria-label="Close BLS course details">×</a>
+          <p className="eyebrow">Healthcare professionals</p>
+          <h2 id="bls-modal-title">BLS Provider Course</h2>
+          <p className="modal-intro">
+            Focused, hands-on training designed to prepare healthcare providers
+            to respond confidently as part of a high-performance team.
+          </p>
+
+          <div className="modal-pricing">
+            <div><span>First-time course</span><strong>$55</strong></div>
+            <div><span>Renewal course</span><strong>$50</strong></div>
+            <div><span>Typical runtime</span><strong>2–3 hours</strong></div>
+          </div>
+
+          <div className="modal-details">
+            <div>
+              <p className="modal-label">Course coverage</p>
+              <ul>
+                <li>High-performance CPR</li>
+                <li>Team dynamics and coordinated response</li>
+                <li>Written and practical testing</li>
+              </ul>
+            </div>
+            <div>
+              <p className="modal-label">Materials included</p>
+              <ul>
+                <li>One-way valves and masks</li>
+                <li>Required workbooks</li>
+                <li>Student manuals and course materials</li>
+              </ul>
+            </div>
+          </div>
+
+          <a className="button" href="#contact">Request BLS Training</a>
         </div>
       </section>
 
