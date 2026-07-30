@@ -157,7 +157,7 @@ export default function Home() {
           <div className="modal-pricing">
             <div><span>First-time course</span><strong>$65</strong></div>
             <div><span>Renewal course</span><strong>$60</strong></div>
-            <div><span>Typical runtime</span><strong>2–3 hours</strong></div>
+            <div><span>Typical runtime</span><strong>3 hours</strong></div>
           </div>
 
           <div className="modal-details">
@@ -200,9 +200,15 @@ export default function Home() {
             person available to help during a cardiac arrest emergency.
           </p>
 
-          <div className="modal-pricing modal-pricing-two">
+          <div className="modal-pricing modal-pricing-stack">
             <div><span>First-time course</span><strong>$65</strong></div>
             <div><span>Renewal course</span><strong>$60</strong></div>
+            <div>
+              <span>First Aid add-on</span>
+              <strong>+$25</strong>
+              <small>Add First Aid training to the end of the Heartsaver course.</small>
+            </div>
+            <div><span>Typical runtime</span><strong>3 hours</strong></div>
           </div>
 
           <div className="modal-details">
@@ -250,7 +256,7 @@ export default function Home() {
 
           <div className="modal-pricing modal-pricing-two">
             <div><span>Course cost</span><strong>$40</strong></div>
-            <div><span>Add CPR training</span><strong>+$25</strong></div>
+            <div><span>Typical runtime</span><strong>Dependent on course needs</strong></div>
           </div>
 
           <div className="modal-details">

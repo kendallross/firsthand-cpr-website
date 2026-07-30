@@ -518,6 +518,16 @@ h2 {
   grid-template-columns: repeat(2, 1fr);
 }
 
+.modal-pricing-stack {
+  grid-template-columns: 1fr;
+}
+
+.modal-pricing.modal-pricing-stack div + div {
+  border-left: 0;
+  border-top: 1px solid #d8d5ce;
+  padding-left: 0;
+}
+
 .modal-pricing div {
   padding: 22px 20px 22px 0;
 }
@@ -530,6 +540,14 @@ h2 {
 .modal-pricing span,
 .modal-pricing strong {
   display: block;
+}
+
+.modal-pricing small {
+  color: #666;
+  display: block;
+  font-size: 12px;
+  line-height: 1.45;
+  margin-top: 8px;
 }
 
 .modal-pricing span,
