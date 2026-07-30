@@ -525,6 +525,15 @@ h2 {
   margin: 34px 0;
 }
 
+.modal-pricing-two {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.modal-pricing-one {
+  grid-template-columns: minmax(220px, 1fr);
+  max-width: 320px;
+}
+
 .modal-pricing div {
   padding: 22px 20px 22px 0;
 }

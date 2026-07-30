@@ -3,16 +3,19 @@ const courses = [
     title: "BLS Provider",
     audience: "Healthcare professionals",
     detail: "High-performance CPR, team response, AED use, and choking relief.",
+    modalId: "bls-course-details",
   },
   {
     title: "Heartsaver CPR AED",
     audience: "Workplaces & community",
     detail: "Confident adult, child, and infant CPR with hands-on AED practice.",
+    modalId: "heartsaver-course-details",
   },
   {
     title: "First Aid",
     audience: "Everyday responders",
     detail: "Practical care for common injuries and sudden medical emergencies.",
+    modalId: "first-aid-course-details",
   },
 ];
 
@@ -117,13 +120,11 @@ export default function Home() {
         <div className="course-grid">
           {courses.map((course, index) => (
             <article className="course-card" key={course.title}>
-              {index === 0 && (
-                <a
-                  className="course-card-trigger"
-                  href="#bls-course-details"
-                  aria-label="View BLS Provider course details"
-                />
-              )}
+              <a
+                className="course-card-trigger"
+                href={`#${course.modalId}`}
+                aria-label={`View ${course.title} course details`}
+              />
               <span className="course-number">0{index + 1}</span>
               <p className="course-audience">{course.audience}</p>
               <h3>{course.title}</h3>
@@ -132,8 +133,8 @@ export default function Home() {
                 <span>Course cost</span>
                 <div aria-label="Pricing to be added" />
               </div>
-              <a href={index === 0 ? "#bls-course-details" : "#contact"}>
-                {index === 0 ? "View course details" : "Ask about this class"} <span>→</span>
+              <a href={`#${course.modalId}`}>
+                View course details <span>→</span>
               </a>
             </article>
           ))}
@@ -183,6 +184,98 @@ export default function Home() {
           </div>
 
           <a className="button" href="#contact">Request BLS Training</a>
+        </div>
+      </section>
+
+      <section
+        className="course-modal"
+        id="heartsaver-course-details"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="heartsaver-modal-title"
+      >
+        <a className="modal-backdrop" href="#classes" aria-label="Close Heartsaver course details" />
+        <div className="modal-card">
+          <a className="modal-close" href="#classes" aria-label="Close Heartsaver course details">×</a>
+          <p className="eyebrow">Workplaces & community</p>
+          <h2 id="heartsaver-modal-title">Heartsaver CPR AED</h2>
+          <p className="modal-intro">
+            Practical training for everyday responders who may be the first
+            person available to help during a cardiac arrest emergency.
+          </p>
+
+          <div className="modal-pricing modal-pricing-two">
+            <div><span>First-time course</span><strong>$55</strong></div>
+            <div><span>Renewal course</span><strong>$50</strong></div>
+          </div>
+
+          <div className="modal-details">
+            <div>
+              <p className="modal-label">Cardiac arrest response</p>
+              <ul>
+                <li>Recognizing cardiac arrest and activating emergency services</li>
+                <li>High-quality CPR for adults, children, and infants</li>
+                <li>Safe, confident use of an AED</li>
+                <li>Choking relief and continued care until EMS arrives</li>
+              </ul>
+            </div>
+            <div>
+              <p className="modal-label">Materials included</p>
+              <ul>
+                <li>One-way valves and masks</li>
+                <li>Required workbooks</li>
+                <li>Student manuals and course materials</li>
+              </ul>
+            </div>
+          </div>
+
+          <a className="button" href="#contact">Request Heartsaver Training</a>
+        </div>
+      </section>
+
+      <section
+        className="course-modal"
+        id="first-aid-course-details"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="first-aid-modal-title"
+      >
+        <a className="modal-backdrop" href="#classes" aria-label="Close First Aid course details" />
+        <div className="modal-card">
+          <a className="modal-close" href="#classes" aria-label="Close First Aid course details">×</a>
+          <p className="eyebrow">Everyday responders</p>
+          <h2 id="first-aid-modal-title">First Aid Course</h2>
+          <p className="modal-intro">
+            Build practical confidence across a wide range of common injuries,
+            illnesses, and sudden emergencies. Organizations and groups may
+            choose areas of emphasis that best match their people, setting,
+            and likely response needs.
+          </p>
+
+          <div className="modal-pricing modal-pricing-one">
+            <div><span>Course cost</span><strong>$40</strong></div>
+          </div>
+
+          <div className="modal-details">
+            <div>
+              <p className="modal-label">Emergency topics</p>
+              <ul>
+                <li>Bleeding, wounds, burns, and traumatic injuries</li>
+                <li>Sudden illness and medical emergencies</li>
+                <li>Environmental and workplace emergencies</li>
+              </ul>
+            </div>
+            <div>
+              <p className="modal-label">Training tailored to you</p>
+              <ul>
+                <li>Choose added emphasis for your workplace or organization</li>
+                <li>Practice realistic situations relevant to your group</li>
+                <li>Learn clear steps for care until professional help arrives</li>
+              </ul>
+            </div>
+          </div>
+
+          <a className="button" href="#contact">Request First Aid Training</a>
         </div>
       </section>
 
