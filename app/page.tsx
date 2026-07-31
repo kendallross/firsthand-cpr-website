@@ -74,21 +74,16 @@ export default function Home() {
             <span>Flexible group scheduling</span>
           </div>
         </div>
-        <div className="hero-panel" aria-label="CPR training focus areas">
-          <div className="pulse-line" aria-hidden="true">
-            <i />
-            <i />
-            <i />
-            <i />
-            <i />
-          </div>
-          <p>Real confidence starts before the emergency.</p>
-          <div className="stat-grid">
-            <div><strong>CPR</strong><span>Learn the rhythm</span></div>
-            <div><strong>AED</strong><span>Act without delay</span></div>
-            <div><strong>FIRST AID</strong><span>Respond with purpose</span></div>
-            <div><strong>BLS</strong><span>Work as a team</span></div>
-          </div>
+        <div className="hero-panel" aria-labelledby="why-firsthand-title">
+          <h2 id="why-firsthand-title">Why FirstHand</h2>
+          <p>
+            We believe that the best teachers have first hand experience. Our
+            instructors don&apos;t teach from a script alone, but draw from
+            their experiences as responders to true emergencies day in and day
+            out. This perspective has shaped our teaching and will prepare every
+            student with the knowledge and confidence to be the
+            &ldquo;first hands&rdquo; on scene of an emergency.
+          </p>
         </div>
       </section>
 
