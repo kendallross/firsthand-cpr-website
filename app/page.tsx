@@ -48,12 +48,6 @@ export default function Home() {
             alt="FirstHand CPR Training"
           />
         </a>
-        <nav aria-label="Main navigation">
-          <a href="#classes">Classes</a>
-          <a href="#groups">Group Training</a>
-          <a href="#about">About</a>
-          <a href="#faq">FAQ</a>
-        </nav>
       </header>
 
       <section className="hero" id="top">

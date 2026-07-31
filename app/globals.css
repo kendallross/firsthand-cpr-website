@@ -88,23 +88,6 @@ a {
   letter-spacing: 2.2px;
 }
 
-nav {
-  display: flex;
-  gap: 28px;
-  justify-content: center;
-  padding: 20px clamp(24px, 5vw, 80px);
-}
-
-nav a {
-  color: #383838;
-  font-size: 14px;
-  font-weight: 600;
-}
-
-nav a:hover {
-  color: var(--red);
-}
-
 .button {
   background: var(--red);
   border: 1px solid var(--red);
@@ -755,10 +738,6 @@ footer p:last-child {
 }
 
 @media (max-width: 960px) {
-  nav {
-    display: none;
-  }
-
   .hero,
   .section-heading,
   .group-section,
