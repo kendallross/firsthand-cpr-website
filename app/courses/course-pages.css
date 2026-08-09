@@ -1,93 +1,88 @@
-.course-header-title {
-  font-size: 15px;
-  font-weight: 750;
-  letter-spacing: -0.01em;
-  text-align: center;
-}
-
-.course-hero {
-  display: grid;
-  grid-template-columns: 1.12fr 0.88fr;
-  min-height: 650px;
-}
-
-.course-hero-copy {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  padding: 80px clamp(28px, 7vw, 110px);
-}
-
-.course-hero-copy h1 {
-  color: var(--ink);
-  font-size: clamp(58px, 7vw, 100px);
-}
-
-.course-hero-panel {
-  background: var(--ink);
-  color: white;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  padding: clamp(44px, 6vw, 86px);
-  position: relative;
-  overflow: hidden;
-}
-
-.course-hero-panel::before {
-  background: var(--red);
-  content: "";
-  height: 8px;
-  left: 0;
-  position: absolute;
-  right: 0;
-  top: 0;
-}
-
-.course-hero-panel .eyebrow { color: #e7aeb3; }
-.course-hero-panel h2 { font-size: clamp(42px, 5vw, 70px); margin-bottom: 32px; }
-.course-hero-panel > p:last-child { color: #c2c2c2; font-size: 17px; line-height: 1.7; max-width: 580px; }
+/* Course pages deliberately inherit the homepage visual system from globals.css.
+   These rules only define course-specific layout where the homepage has no equivalent. */
 
 .course-overview {
+  align-items: center;
   display: grid;
   gap: 80px;
   grid-template-columns: 0.85fr 1.15fr;
 }
 
-.course-overview-copy { align-self: center; max-width: 760px; }
-.course-lead { color: #555; font-size: 19px; line-height: 1.8; }
-.course-audience-line { border-top: 1px solid #ddd9d2; color: #656565; margin-top: 32px; padding-top: 24px; }
-.course-audience-line strong { color: var(--ink); }
-
-.course-detail-section { display: grid; grid-template-columns: 1fr 1fr; }
-.course-detail-card { background: var(--paper); padding: 90px clamp(28px, 7vw, 110px); }
-.course-detail-card-dark { background: var(--charcoal); color: white; }
-.course-detail-card h2 { font-size: clamp(38px, 4vw, 62px); margin-bottom: 38px; }
-.course-detail-card ul { list-style: none; margin: 0; padding: 0; }
-.course-detail-card li { border-top: 1px solid #d8d4cd; font-size: 16px; font-weight: 650; padding: 18px 0; }
-.course-detail-card li::before { color: var(--red); content: "＋"; margin-right: 12px; }
-.course-detail-card-dark li { border-color: #4b4b4b; color: #d0d0d0; }
-
-.credential-section { display: grid; gap: 80px; grid-template-columns: 0.9fr 1.1fr; }
-.credential-section > div:last-child { align-self: center; color: #626262; font-size: 18px; line-height: 1.75; max-width: 720px; }
-
-.service-area-section { background: var(--paper); padding: 100px clamp(28px, 7vw, 110px); text-align: center; }
-.service-area-section > p:not(.eyebrow) { color: #656565; font-size: 17px; line-height: 1.7; margin: 28px auto 42px; max-width: 700px; }
-.service-area-grid { display: grid; gap: 12px; grid-template-columns: repeat(4, 1fr); margin: 0 auto; max-width: 1100px; }
-.service-area-grid span { background: white; border-top: 4px solid var(--red); font-size: 15px; font-weight: 750; padding: 26px 16px; }
-
-@media (max-width: 960px) {
-  .course-header-title { display: none; }
-  .course-hero, .course-overview, .course-detail-section, .credential-section { grid-template-columns: 1fr; }
-  .course-hero-panel { min-height: 480px; }
-  .service-area-grid { grid-template-columns: 1fr 1fr; }
+.course-overview-copy {
+  max-width: 720px;
 }
 
-@media (max-width: 640px) {
-  .course-hero-copy { padding: 64px 22px; }
-  .course-hero-copy h1 { font-size: 54px; }
-  .course-hero-panel { min-height: 420px; padding: 52px 22px; }
-  .course-detail-card { padding: 70px 22px; }
-  .service-area-section { padding: 72px 22px; }
-  .service-area-grid { grid-template-columns: 1fr; }
+.course-overview-copy p {
+  color: #656565;
+  font-size: 17px;
+  line-height: 1.7;
+}
+
+.course-overview-copy p + p {
+  border-top: 1px solid #d6d4cf;
+  margin-top: 28px;
+  padding-top: 24px;
+}
+
+.course-overview-copy strong {
+  color: var(--ink);
+}
+
+.course-skills-section .group-list span {
+  min-height: 82px;
+}
+
+.course-logo-card img {
+  display: block;
+  margin: -45px -60px -35px;
+  max-width: none;
+  width: calc(100% + 120px);
+}
+
+.course-audience-list {
+  border-top: 1px solid #d6d4cf;
+  margin-top: 34px;
+}
+
+.course-audience-list p {
+  border-bottom: 1px solid #d6d4cf;
+  color: var(--ink);
+  font-size: 17px;
+  font-weight: 700;
+  margin: 0;
+  padding: 18px 0;
+}
+
+.course-audience-list p::before {
+  color: var(--red);
+  content: "＋";
+  margin-right: 14px;
+}
+
+.credential-section {
+  align-items: center;
+  display: grid;
+  gap: 80px;
+  grid-template-columns: 0.85fr 1.15fr;
+}
+
+.credential-section > div:last-child {
+  max-width: 720px;
+}
+
+.credential-section > div:last-child p {
+  color: #656565;
+  font-size: 17px;
+  line-height: 1.7;
+}
+
+.service-area-section {
+  background: var(--charcoal);
+}
+
+@media (max-width: 960px) {
+  .course-overview,
+  .credential-section {
+    grid-template-columns: 1fr;
+  }
 }
