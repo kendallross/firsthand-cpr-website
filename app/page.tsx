@@ -3,16 +3,19 @@ const courses = [
     title: "BLS Provider",
     audience: "Healthcare professionals",
     detail: "High-performance CPR, team response, AED use, and choking relief.",
+    href: "/courses/bls-provider",
   },
   {
     title: "Heartsaver CPR AED",
     audience: "Workplaces & community",
     detail: "Confident adult, child, and infant CPR with hands-on AED practice.",
+    href: "/courses/heartsaver-cpr-aed",
   },
   {
     title: "First Aid",
     audience: "Everyday responders",
     detail: "Practical care for common injuries and sudden medical emergencies.",
+    href: "/courses/first-aid",
   },
 ];
 
@@ -76,13 +79,7 @@ export default function Home() {
           </div>
         </div>
         <div className="hero-panel" aria-label="CPR training focus areas">
-          <div className="pulse-line" aria-hidden="true">
-            <i />
-            <i />
-            <i />
-            <i />
-            <i />
-          </div>
+          <div className="pulse-line" aria-hidden="true"><i /><i /><i /><i /><i /></div>
           <p>Confidence starts before the emergency.</p>
           <div className="stat-grid">
             <div><strong>CPR</strong><span>Learn the rhythm</span></div>
@@ -95,23 +92,13 @@ export default function Home() {
 
       <section className="proof-strip">
         <p>Training that feels practical because it comes from practice.</p>
-        <ul>
-          <li>Firefighters</li>
-          <li>Paramedics</li>
-          <li>EMTs</li>
-        </ul>
+        <ul><li>Firefighters</li><li>Paramedics</li><li>EMTs</li></ul>
       </section>
 
       <section className="section" id="classes">
         <div className="section-heading">
-          <div>
-            <p className="eyebrow">Courses</p>
-            <h2>Skills you can use when it matters.</h2>
-          </div>
-          <p>
-            Clear instruction, realistic scenarios, and plenty of practice—
-            without the generic classroom routine.
-          </p>
+          <div><p className="eyebrow">Courses</p><h2>Skills you can use when it matters.</h2></div>
+          <p>Clear instruction, realistic scenarios, and plenty of practice—without the generic classroom routine.</p>
         </div>
         <div className="course-grid">
           {courses.map((course, index) => (
@@ -120,7 +107,7 @@ export default function Home() {
               <p className="course-audience">{course.audience}</p>
               <h3>{course.title}</h3>
               <p>{course.detail}</p>
-              <a href="#contact">Ask about this class <span>→</span></a>
+              <a href={course.href}>View course details <span>→</span></a>
             </article>
           ))}
         </div>
@@ -128,79 +115,35 @@ export default function Home() {
 
       <section className="group-section" id="groups">
         <div className="group-copy">
-          <p className="eyebrow">On-site group training</p>
-          <h2>Bring the training to your team.</h2>
-          <p>
-            We make it easier to train groups at your location, on a schedule
-            that works for your organization.
-          </p>
+          <p className="eyebrow">On-site group training</p><h2>Bring the training to your team.</h2>
+          <p>We make it easier to train groups at your location, on a schedule that works for your organization.</p>
           <a className="button button-light" href="#contact">Request Group Training</a>
         </div>
         <div className="group-list">
-          {["Businesses", "Schools", "Churches", "Gyms", "Childcare", "Community groups"].map(
-            (group) => <span key={group}>{group}</span>,
-          )}
+          {["Businesses", "Schools", "Churches", "Gyms", "Childcare", "Community groups"].map((group) => <span key={group}>{group}</span>)}
         </div>
       </section>
 
       <section className="section about-section" id="about">
-        <div className="about-kicker">
-          <img
-            src="/fh-logo.png"
-            alt="FirstHand CPR Training handprint logo"
-          />
-          <p>It is more than our name. It is how we teach.</p>
-        </div>
-        <div className="about-copy">
-          <p className="eyebrow">Why FirstHand</p>
-          <h2>We have seen what prepared people can do.</h2>
-          <p>
-            Our instructors are not teaching from a script alone. They have
-            responded to real emergencies and understand the pressure, questions,
-            and uncertainty people face in those first critical moments.
-          </p>
-          <p>
-            That perspective shapes every class: practical, direct, supportive,
-            and focused on helping you act with confidence.
-          </p>
-        </div>
+        <div className="about-kicker"><img src="/fh-logo.png" alt="FirstHand CPR Training handprint logo" /><p>It is more than our name. It is how we teach.</p></div>
+        <div className="about-copy"><p className="eyebrow">Why FirstHand</p><h2>We have seen what prepared people can do.</h2><p>Our instructors are not teaching from a script alone. They have responded to real emergencies and understand the pressure, questions, and uncertainty people face in those first critical moments.</p><p>That perspective shapes every class: practical, direct, supportive, and focused on helping you act with confidence.</p></div>
       </section>
 
       <section className="section faq-section" id="faq">
-        <div>
-          <p className="eyebrow">Common questions</p>
-          <h2>Know before you go.</h2>
-        </div>
-        <div className="faq-list">
-          {faqs.map((faq) => (
-            <details key={faq.question}>
-              <summary>{faq.question}<span aria-hidden="true">+</span></summary>
-              <p>{faq.answer}</p>
-            </details>
-          ))}
-        </div>
+        <div><p className="eyebrow">Common questions</p><h2>Know before you go.</h2></div>
+        <div className="faq-list">{faqs.map((faq) => <details key={faq.question}><summary>{faq.question}<span aria-hidden="true">+</span></summary><p>{faq.answer}</p></details>)}</div>
       </section>
 
       <section className="contact-section" id="contact">
-        <p className="eyebrow">Ready when you are</p>
-        <h2>Let&apos;s plan your training.</h2>
-        <p>
-          Tell us what kind of class you need and who you are training.
-          We&apos;ll help you find the right next step.
-        </p>
-        <a className="button button-light" href="mailto:krgraham115@gmail.com">
-          Email FirstHand CPR
-        </a>
+        <p className="eyebrow">Ready when you are</p><h2>Let&apos;s plan your training.</h2>
+        <p>Tell us what kind of class you need and who you are training. We&apos;ll help you find the right next step.</p>
+        <a className="button button-light" href="mailto:krgraham115@gmail.com">Email FirstHand CPR</a>
         <small>Phone, service area, pricing, and booking details coming next.</small>
       </section>
 
       <footer>
-        <a className="brand brand-footer" href="#top">
-          <span className="brand-mark" aria-hidden="true">FH</span>
-          <span><strong>FirstHand</strong><small>CPR TRAINING</small></span>
-        </a>
-        <p>CPR • AED • First Aid • BLS</p>
-        <p>© {new Date().getFullYear()} FirstHand CPR Training LLC</p>
+        <a className="brand brand-footer" href="#top"><span className="brand-mark" aria-hidden="true">FH</span><span><strong>FirstHand</strong><small>CPR TRAINING</small></span></a>
+        <p>CPR • AED • First Aid • BLS</p><p>© {new Date().getFullYear()} FirstHand CPR Training LLC</p>
       </footer>
     </main>
   );
