@@ -28,19 +28,149 @@ export default async function CoursePage({ params }: Props) {
 
   return (
     <main>
-      <header className="site-header course-site-header">
-        <a className="brand" href="/" aria-label="FirstHand CPR Training home"><span className="brand-mark" aria-hidden="true">FH</span><span><strong>FirstHand</strong><small>CPR TRAINING</small></span></a>
-        <div className="course-header-title" aria-label="Current course">{course.title}</div>
-        <a className="button button-small" href="/#contact">Request Training</a>
+      <header className="site-header">
+        <a className="brand" href="/" aria-label="FirstHand CPR Training home">
+          <span className="brand-mark" aria-hidden="true">FH</span>
+          <span>
+            <strong>FirstHand</strong>
+            <small>CPR TRAINING</small>
+          </span>
+        </a>
+        <nav aria-label="Course navigation">
+          <a href="/#classes">Classes</a>
+          <a href="/#groups">Group Training</a>
+          <a href="/#about">About</a>
+          <a href="/#faq">FAQ</a>
+        </nav>
+        <a className="button button-small" href="#request">Request Training</a>
       </header>
-      <section className="course-hero"><div className="course-hero-copy"><p className="eyebrow">{course.eyebrow}</p><h1>{course.title}</h1><p className="hero-lede">{course.intro}</p><div className="hero-actions"><a className="button" href="#request">Request This Course</a><a className="text-link" href="/#classes">← All courses</a></div><div className="trust-row"><span>Hands-on practice</span><span>Experienced instructors</span><span>On-site group training</span></div></div><div className="course-hero-panel"><p className="eyebrow">FirstHand approach</p><h2>Training shaped by real emergency response.</h2><p>Our instructors are firefighters, paramedics, and EMTs who teach the skills with the perspective that comes from using them when it counts.</p></div></section>
-      <section className="proof-strip"><p>Practical skills. Clear instruction. Real experience.</p><ul><li>Firefighters</li><li>Paramedics</li><li>EMTs</li></ul></section>
-      <section className="section course-overview"><div><p className="eyebrow">Course overview</p><h2>Know what to do next.</h2></div><div className="course-overview-copy"><p className="course-lead">{course.description}</p><p className="course-audience-line"><strong>Designed for:</strong> {course.audience}</p></div></section>
-      <section className="course-detail-section"><div className="course-detail-card"><p className="eyebrow">What you&apos;ll practice</p><h2>Skills that matter.</h2><ul>{course.highlights.map((item) => <li key={item}>{item}</li>)}</ul></div><div className="course-detail-card course-detail-card-dark"><p className="eyebrow">Who it&apos;s for</p><h2>Built for real people and teams.</h2><ul>{course.idealFor.map((item) => <li key={item}>{item}</li>)}</ul></div></section>
-      <section className="section credential-section"><div><p className="eyebrow">Course completion</p><h2>Train with purpose.</h2></div><div><p>{course.credential}</p><p>Need to train an entire staff? FirstHand can bring training to your location and work with your organization to plan a practical group session.</p></div></section>
-      <section className="service-area-section"><p className="eyebrow">Areas we serve</p><h2>Local training across East Tennessee.</h2><p>FirstHand CPR Training provides on-site and group training throughout Knoxville and the surrounding communities.</p><div className="service-area-grid"><span>Knox County</span><span>Blount County</span><span>Anderson County</span><span>Loudon County</span></div></section>
-      <section className="contact-section" id="request"><p className="eyebrow">Ready when you are</p><h2>Request {course.title} training.</h2><p>Tell us who you are training and what your organization needs. We&apos;ll help you plan the right next step.</p><a className="button button-light" href={`mailto:krgraham115@gmail.com?subject=${encodeURIComponent(course.title + " Training Request")}`}>Email FirstHand CPR</a></section>
-      <footer><a className="brand brand-footer" href="/"><span className="brand-mark" aria-hidden="true">FH</span><span><strong>FirstHand</strong><small>CPR TRAINING</small></span></a><p>CPR • AED • First Aid • BLS</p><p>© {new Date().getFullYear()} FirstHand CPR Training LLC</p></footer>
+
+      <section className="hero course-hero" id="top">
+        <div className="hero-copy">
+          <p className="eyebrow">{course.eyebrow}</p>
+          <h1>
+            {course.title}
+            <span>Training.</span>
+          </h1>
+          <p className="hero-lede">{course.intro}</p>
+          <div className="hero-actions">
+            <a className="button" href="#request">Request This Course</a>
+            <a className="text-link" href="/#classes">View All Classes <span>→</span></a>
+          </div>
+          <div className="trust-row" aria-label="Training highlights">
+            <span>Hands-on practice</span>
+            <span>Experienced instructors</span>
+            <span>Flexible group scheduling</span>
+          </div>
+        </div>
+
+        <div className="hero-panel" aria-label={`${course.title} training focus`}>
+          <div className="pulse-line" aria-hidden="true">
+            <i />
+            <i />
+            <i />
+            <i />
+            <i />
+          </div>
+          <p>{course.title} taught with real emergency experience.</p>
+          <div className="stat-grid">
+            {course.highlights.slice(0, 4).map((item, index) => (
+              <div key={item}>
+                <strong>0{index + 1}</strong>
+                <span>{item}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="proof-strip">
+        <p>Training that feels practical because it comes from practice.</p>
+        <ul>
+          <li>Firefighters</li>
+          <li>Paramedics</li>
+          <li>EMTs</li>
+        </ul>
+      </section>
+
+      <section className="section course-overview">
+        <div>
+          <p className="eyebrow">Course overview</p>
+          <h2>Know what to do when it matters.</h2>
+        </div>
+        <div className="course-overview-copy">
+          <p>{course.description}</p>
+          <p><strong>Designed for:</strong> {course.audience}</p>
+        </div>
+      </section>
+
+      <section className="group-section course-skills-section">
+        <div className="group-copy">
+          <p className="eyebrow">What you&apos;ll practice</p>
+          <h2>Skills you can use.</h2>
+          <p>Clear instruction, realistic practice, and repetition built around the situations you may actually face.</p>
+        </div>
+        <div className="group-list">
+          {course.highlights.map((item) => <span key={item}>{item}</span>)}
+        </div>
+      </section>
+
+      <section className="section about-section course-audience-section">
+        <div className="about-kicker course-logo-card">
+          <img src="/fh-logo.png" alt="FirstHand CPR Training handprint logo" />
+          <p>Real experience. Real training.</p>
+        </div>
+        <div className="about-copy">
+          <p className="eyebrow">Who this course is for</p>
+          <h2>Training built around your role.</h2>
+          <div className="course-audience-list">
+            {course.idealFor.map((item) => <p key={item}>{item}</p>)}
+          </div>
+        </div>
+      </section>
+
+      <section className="section credential-section">
+        <div>
+          <p className="eyebrow">Course completion</p>
+          <h2>Train with purpose.</h2>
+        </div>
+        <div>
+          <p>{course.credential}</p>
+          <p>Need to train an entire staff? FirstHand can bring training to your location and work with your organization to plan a practical group session.</p>
+        </div>
+      </section>
+
+      <section className="group-section service-area-section">
+        <div className="group-copy">
+          <p className="eyebrow">Areas we serve</p>
+          <h2>Local training across East Tennessee.</h2>
+          <p>FirstHand CPR Training provides on-site and group training throughout Knoxville and the surrounding communities.</p>
+        </div>
+        <div className="group-list">
+          <span>Knox County</span>
+          <span>Blount County</span>
+          <span>Anderson County</span>
+          <span>Loudon County</span>
+        </div>
+      </section>
+
+      <section className="contact-section" id="request">
+        <p className="eyebrow">Ready when you are</p>
+        <h2>Request {course.title} training.</h2>
+        <p>Tell us who you are training and what your organization needs. We&apos;ll help you find the right next step.</p>
+        <a className="button button-light" href={`mailto:krgraham115@gmail.com?subject=${encodeURIComponent(course.title + " Training Request")}`}>
+          Email FirstHand CPR
+        </a>
+      </section>
+
+      <footer>
+        <a className="brand brand-footer" href="/">
+          <span className="brand-mark" aria-hidden="true">FH</span>
+          <span><strong>FirstHand</strong><small>CPR TRAINING</small></span>
+        </a>
+        <p>CPR • AED • First Aid • BLS</p>
+        <p>© {new Date().getFullYear()} FirstHand CPR Training LLC</p>
+      </footer>
     </main>
   );
 }
