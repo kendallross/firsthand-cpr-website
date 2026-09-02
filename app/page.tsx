@@ -1,3 +1,7 @@
+"use client";
+
+import { useEffect, useRef, type MouseEvent } from "react";
+
 const courses = [
   {
     title: "BLS Provider",
@@ -35,9 +39,105 @@ const faqs = [
     answer:
       "For eligible AHA courses, course completion cards are provided by the American Heart Association after all course requirements are successfully completed.",
   },
+  {
+    question: "Are there any limitations to who can take a CPR course and receive a card?",
+    answer:
+      "Students must be able to pass both the written and practical skills tests, including demonstrating effective CPR.",
+  },
+  {
+    question: "How long will my certification last?",
+    answer:
+      "CPR cards are valid for two years. After that, you can take a slightly shorter renewal course that covers the same material.",
+  },
+  {
+    question: "How will I receive my CPR card?",
+    answer:
+      "The American Heart Association issues cards electronically to the email address you list on the class roster.",
+  },
+  {
+    question: "How long does it take to receive my card?",
+    answer:
+      "The instructor submits the course materials on the day of the course or the following day. Please allow 7–10 days to receive your card, although it typically arrives sooner.",
+  },
+  {
+    question: "How do I pay for the course?",
+    answer:
+      "FirstHand accepts tap-to-pay, Zelle, and cash. We can also create an invoice for large business groups paying as a single entity.",
+  },
+  {
+    question: "Where is FirstHand CPR Training located?",
+    answer:
+      "FirstHand is based in Knoxville, Tennessee, and conducts training throughout Knox, Blount, Loudon, and Anderson counties—and beyond.",
+  },
+];
+
+const groups = [
+  {
+    title: "Businesses",
+    modalId: "business-training",
+    detail: (
+      <>
+        OSHA requires employers to provide appropriate medical and first-aid
+        resources, and some standards specifically require trained first-aid or
+        CPR responders. Requirements depend on your workplace hazards and access
+        to nearby medical care. <a href="https://www.osha.gov/medical-first-aid" target="_blank" rel="noreferrer">Review OSHA&apos;s medical and first-aid standards</a> to see what applies to your business, then become compliant with FirstHand.
+      </>
+    ),
+  },
+  {
+    title: "Schools",
+    modalId: "school-training",
+    detail: "Child emergencies can be some of the scariest moments. Prepare teachers and staff to respond with confidence through practical CPR, AED, and First Aid training.",
+  },
+  {
+    title: "Churches",
+    modalId: "church-training",
+    detail: "Large gatherings require calm, coordinated action. CPR and First Aid training helps your ministry team direct bystanders, communicate clearly, and work together until emergency professionals arrive.",
+  },
+  {
+    title: "Gyms",
+    modalId: "gym-training",
+    detail: "Exercise places added stress on the heart, and emergencies can happen without warning. Prepare your staff to recognize trouble and respond quickly with CPR, AED, and First Aid training.",
+  },
+  {
+    title: "Childcare",
+    modalId: "childcare-training",
+    detail: "Emergencies involving children can be frightening and fast-moving. Give caregivers the hands-on CPR and First Aid skills to stay calm, act quickly, and protect the children in their care.",
+  },
+  {
+    title: "Community groups",
+    modalId: "community-training",
+    detail: "When people gather, being prepared matters. Training helps members direct others, work as a team, and provide confident CPR and First Aid care until professional help arrives.",
+  },
 ];
 
 export default function Home() {
+  const requestScrollPosition = useRef(0);
+
+  const openRequestForm = (event: MouseEvent<HTMLAnchorElement>) => {
+    event.preventDefault();
+    requestScrollPosition.current = window.scrollY;
+    window.location.hash = "request-training";
+  };
+
+  const closeRequestForm = (event: MouseEvent<HTMLAnchorElement>) => {
+    event.preventDefault();
+    window.location.hash = "closed";
+    window.requestAnimationFrame(() => {
+      window.history.replaceState({}, "", `${window.location.pathname}${window.location.search}`);
+      window.scrollTo(0, requestScrollPosition.current);
+    });
+  };
+
+  useEffect(() => {
+    const url = new URL(window.location.href);
+    if (url.searchParams.get("submitted") !== "1") return;
+
+    window.alert("Thanks for your request! FirstHand will reach out shortly to set up your course.");
+    url.searchParams.delete("submitted");
+    window.history.replaceState({}, "", `${url.pathname}${url.search}${url.hash}`);
+  }, []);
+
   return (
     <main>
       <header className="site-header">
@@ -66,7 +166,7 @@ export default function Home() {
           </p>
           <div className="hero-actions">
             <a className="button" href="#classes">View Course Options</a>
-            <a className="button button-outline" href="#contact">Request Training</a>
+            <a className="button button-outline" href="#request-training" onClick={openRequestForm}>Request Training</a>
           </div>
           <div className="trust-row" aria-label="Training highlights">
             <span>Hands-on practice</span>
@@ -168,7 +268,7 @@ export default function Home() {
             </div>
           </div>
 
-          <a className="button" href="#contact">Request BLS Training</a>
+          <a className="button" href="#request-training" onClick={openRequestForm}>Request BLS Training</a>
         </div>
       </section>
 
@@ -220,7 +320,7 @@ export default function Home() {
             </div>
           </div>
 
-          <a className="button" href="#contact">Request Heartsaver Training</a>
+          <a className="button" href="#request-training" onClick={openRequestForm}>Request Heartsaver Training</a>
         </div>
       </section>
 
@@ -267,7 +367,7 @@ export default function Home() {
             </div>
           </div>
 
-          <a className="button" href="#contact">Request First Aid Training</a>
+          <a className="button" href="#request-training" onClick={openRequestForm}>Request First Aid Training</a>
         </div>
       </section>
 
@@ -279,37 +379,36 @@ export default function Home() {
             We make it easier to train groups at your location, on a schedule
             that works for your organization.
           </p>
-          <a className="button button-light" href="#contact">Request Group Training</a>
+          <a className="button button-light" href="#request-training" onClick={openRequestForm}>Request Group Training</a>
         </div>
         <div className="group-list">
-          {["Businesses", "Schools", "Churches", "Gyms", "Childcare", "Community groups"].map(
-            (group) => <span key={group}>{group}</span>,
-          )}
+          {groups.map((group) => (
+            <a key={group.title} href={`#${group.modalId}`}>
+              {group.title}
+            </a>
+          ))}
         </div>
       </section>
 
-      <section className="section about-section" id="about">
-        <div className="about-kicker">
-          <img
-            src="/fh-logo.png"
-            alt="FirstHand CPR Training handprint logo"
-          />
-          <p>It is more than our name. It is how we teach.</p>
-        </div>
-        <div className="about-copy">
-          <p className="eyebrow">Why FirstHand</p>
-          <h2>We have seen what prepared people can do.</h2>
-          <p>
-            Our instructors are not teaching from a script alone. They have
-            responded to real emergencies and understand the pressure, questions,
-            and uncertainty people face in those first critical moments.
-          </p>
-          <p>
-            That perspective shapes every class: practical, direct, supportive,
-            and focused on helping you act with confidence.
-          </p>
-        </div>
-      </section>
+      {groups.map((group) => (
+        <section
+          className="course-modal group-modal"
+          id={group.modalId}
+          key={group.modalId}
+          role="dialog"
+          aria-modal="true"
+          aria-labelledby={`${group.modalId}-title`}
+        >
+          <a className="modal-backdrop" href="#groups" aria-label={`Close ${group.title} training details`} />
+          <div className="modal-card">
+            <a className="modal-close" href="#groups" aria-label={`Close ${group.title} training details`}>×</a>
+            <p className="eyebrow">On-site group training</p>
+            <h2 id={`${group.modalId}-title`}>{group.title}</h2>
+            <p className="group-modal-copy">{group.detail}</p>
+            <a className="button" href="#request-training" onClick={openRequestForm}>Request Group Training</a>
+          </div>
+        </section>
+      ))}
 
       <section className="section faq-section" id="faq">
         <div>
@@ -327,25 +426,147 @@ export default function Home() {
       </section>
 
       <section className="contact-section" id="contact">
-        <p className="eyebrow">Ready when you are</p>
-        <h2>Let&apos;s plan your training.</h2>
+        <p className="eyebrow">Questions &amp; inquiries</p>
+        <h2>Let&apos;s talk.</h2>
         <p>
-          Tell us what kind of class you need and who you are training.
-          We&apos;ll help you find the right next step.
+          Have a question about courses, scheduling, or certification? Send us
+          an email and we&apos;ll help you find the right next step.
         </p>
-        <a className="button button-light" href="mailto:krgraham115@gmail.com">
-          Email FirstHand CPR
+        <a className="button button-light" href="mailto:kendall@firsthandcprtraining.com?subject=FirstHand%20CPR%20Question">
+          Email FirstHand
         </a>
-        <small>Phone, service area, pricing, and booking details coming next.</small>
+      </section>
+
+      <section
+        className="course-modal request-modal"
+        id="request-training"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="request-training-title"
+      >
+        <a className="modal-backdrop" href="#contact" onClick={closeRequestForm} aria-label="Close training request form" />
+        <div className="modal-card">
+          <a className="modal-close" href="#contact" onClick={closeRequestForm} aria-label="Close training request form">×</a>
+          <p className="eyebrow">Course request</p>
+          <h2 id="request-training-title">Plan your training.</h2>
+          <form action="https://formsubmit.co/kendall@firsthandcprtraining.com" method="POST">
+            <input type="hidden" name="_subject" value="New FirstHand CPR course request" />
+            <input type="hidden" name="_template" value="table" />
+            <input type="hidden" name="_next" value="https://firsthandcprtraining.com/?submitted=1#contact" />
+            <input className="form-honey" type="text" name="_honey" tabIndex={-1} autoComplete="off" />
+
+            <div className="request-form-grid">
+              <label>
+                Course requested
+                <select name="Course Requested" required defaultValue="">
+                  <option value="" disabled>Select a course</option>
+                  <option>BLS Provider</option>
+                  <option>Heartsaver CPR AED</option>
+                  <option>First Aid</option>
+                  <option>CPR, AED &amp; First Aid</option>
+                  <option>Not sure yet</option>
+                </select>
+              </label>
+              <label>
+                Number of students
+                <input type="number" name="Number of Students" min="1" required />
+              </label>
+              <label className="form-wide">
+                Business or individual taking course
+                <input type="text" name="Business or Individual Taking Course" required />
+              </label>
+              <label>
+                Contact Name
+                <input type="text" name="Contact Name" autoComplete="name" required />
+              </label>
+              <label>
+                Phone number
+                <input
+                  type="tel"
+                  name="Phone Number"
+                  autoComplete="tel"
+                  inputMode="tel"
+                  pattern="(?:\+?1[ .-]?)?\(?[2-9][0-9]{2}\)?[ .-]?[0-9]{3}[ .-]?[0-9]{4}"
+                  title="Please enter a valid 10-digit phone number."
+                  required
+                />
+              </label>
+              <label>
+                Email
+                <input
+                  type="email"
+                  name="email"
+                  autoComplete="email"
+                  title="Please enter a valid email address."
+                  required
+                />
+              </label>
+              <fieldset className="date-preference form-wide">
+                <legend>Preferred date range</legend>
+                <p>Choose a start and end date, or select earliest available.</p>
+                <div className="date-range">
+                  <label>
+                    Start date
+                    <input type="date" name="Preferred Start Date" lang="en-GB" />
+                  </label>
+                  <label>
+                    End date
+                    <input type="date" name="Preferred End Date" lang="en-GB" />
+                  </label>
+                </div>
+                <label className="earliest-available">
+                  <input type="checkbox" name="Date Preference" value="Earliest available" />
+                  Earliest available
+                </label>
+              </fieldset>
+              <label>
+                Time of day
+                <select name="Time of Day" required defaultValue="">
+                  <option value="" disabled>Select a time</option>
+                  <option>Morning</option>
+                  <option>Afternoon</option>
+                  <option>Evening</option>
+                  <option>Flexible</option>
+                </select>
+              </label>
+              <label className="form-wide">
+                Location requested
+                <input type="text" name="Location Requested" placeholder="Address, city, or preferred area" required />
+              </label>
+              <fieldset className="form-wide">
+                <legend>Materials available at site</legend>
+                <div className="material-options">
+                  {[
+                    "Television for videos",
+                    "Projector",
+                    "Screen",
+                    "Speakers",
+                    "Internet access",
+                    "Training room",
+                    "None",
+                  ].map((material) => (
+                    <label key={material}>
+                      <input type="checkbox" name="Materials Available at Site" value={material} />
+                      {material}
+                    </label>
+                  ))}
+                </div>
+                <input type="text" name="Other Materials Available" placeholder="Other equipment or site details" />
+              </fieldset>
+            </div>
+            <button className="button" type="submit">Submit Form</button>
+          </form>
+        </div>
       </section>
 
       <footer>
-        <a className="brand brand-footer" href="#top">
-          <span className="brand-mark" aria-hidden="true">FH</span>
-          <span><strong>FirstHand</strong><small>CPR TRAINING</small></span>
+        <a className="footer-logo-link" href="#top" aria-label="FirstHand CPR Training home">
+          <img src="/firsthand-banner-logo.png" alt="FirstHand CPR Training" />
         </a>
-        <p>CPR • AED • First Aid • BLS</p>
-        <p>© {new Date().getFullYear()} FirstHand CPR Training LLC</p>
+        <p className="footer-service">
+          Proudly serving
+          <span>Knoxville, Maryville, Lenoir City, Oak Ridge and more!</span>
+        </p>
       </footer>
     </main>
   );
